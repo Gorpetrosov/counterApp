@@ -2,7 +2,7 @@
     <b-row class="row mb-2 justify-content-center">
         <b-col>
         <b-badge class="mr-2 p-2 font-weight-bold" pill variant="light"><b-icon-cart4 /></b-badge>
-        <b-badge class="ml-2 p-2 mr-2 font-weight-bold" pill variant="success">{{itemsCount}}</b-badge>
+        <b-badge class="ml-2 p-2 mr-2 font-weight-bold" pill variant="success">{{itemsCountVal}}</b-badge>
         <b-badge class="ml-2 p-2 font-weight-bold" pill variant="light">Items</b-badge>
         </b-col>
     </b-row>
@@ -18,17 +18,17 @@
         },
         data() {
             return {
-                itemsCount : 0,
+                itemsCountVal : 0,
             }
         },
-        computed: mapState(['counterList']),
+        computed: mapState(['itemsCount']),
         watch: {
-            counterList(newValue) {
-                this.itemsCount = newValue.length
+            itemsCount(newValue) {
+                this.itemsCountVal = newValue;
             },
         },
         created() {
-            this.itemsCount = this.$store.getters.getCounterList.length;
+            this.itemsCountVal = this.$store.getters.getItemsCount;
         }
     }
 </script>
